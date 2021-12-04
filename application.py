@@ -1,31 +1,43 @@
 from triple_des import triple_des, PAD_PKCS5
+from datetime import datetime
 
-users = ("Alice","Bob")
-inboxes = ["",""] #always hidden messages
-td = triple_des("asdf",padmode=PAD_PKCS5)
+users = ("Alice", "Bob")
+chat = []
+
+# td = triple_des("key", padmode=PAD_PKCS5)
 
 def app():
-    user = input("Enter user: ")
-    if user.lower() == "alice":
-        user = "Alice"
-        reciver = users[1]
-        inbox = inboxes[0]
-    else:
-        user = "Bob"
-        reciver = users[0]
-        inbox = inboxes[1]
+    valid = False
+    while not valid:
+        user = input("Enter user: ")
+        if user.lower() == "alice":
+            valid = True
+            user = "Alice"
+        elif user.lower() == "bob":
+            valid = True
+            user = "Bob"
+        else:
+            print("Error: User not found...")
     print("--------------------CryptoWhatsApp--------------------")
-    if inbox != "":
-        print(reciver,": ",sep="",end="")
-        print(inbox)
-    print(user,end="")
+    chatFile = open("chat.txt", "r")
+    for line in chatFile:
+        chat.append(line.split(": ", 1))
+    for u, m in chat:
+        # for each line decrypt here
+        print(u, ": ", m, end="")
+    chatFile.close()
+    chatFile = open("chat.txt", "a")
+    print(user, end="")
     msg = input(": ")
+    # encrypt the message here
+    message = user + ": " + msg + "\n"
+    chatFile.write(message)
+    chatFile.close()
     if user.lower() == "bob":
-        inboxes[0] = msg
+        chat.append((msg, "Bob"))
     else:
-        inboxes[1] = msg
-    #input crypto project
-    return user,msg
+        chat.append((msg,"Alice"))
+
 
 while True:
     app()
