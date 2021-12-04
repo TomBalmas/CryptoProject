@@ -22,7 +22,7 @@ def app():
         chat.append(line.split(": ", 1))
     for u, m in chat:
         # for each line decrypt here
-        print(u, ": ", m, end="")
+        print(u, ": ", m,sep="" ,end="")
     chatFile.close()
     chatFile = open("chat.txt", "a")
     print(user, end="")
