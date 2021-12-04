@@ -1,5 +1,4 @@
 from triple_des import triple_des, PAD_PKCS5
-from datetime import datetime
 
 users = ("Alice", "Bob")
 chat = []
