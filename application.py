@@ -31,11 +31,7 @@ def app():
     message = user + ": " + msg + "\n"
     chatFile.write(message)
     chatFile.close()
-    if user.lower() == "bob":
-        chat.append((msg, "Bob"))
-    else:
-        chat.append((msg,"Alice"))
-
+    chat.clear()
 
 while True:
     app()
