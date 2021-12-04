@@ -1,6 +1,5 @@
 from triple_des import triple_des, PAD_PKCS5
 
-users = ("Alice", "Bob")
 chat = []
 
 # td = triple_des("key", padmode=PAD_PKCS5)
