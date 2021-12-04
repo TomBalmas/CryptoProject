@@ -17,20 +17,20 @@ def app():
         else:
             print("Error: User not found...")
     print("--------------------CryptoWhatsApp--------------------")
-    chatFile = open("chat.txt", "r")
-    for line in chatFile:
+    chat_file = open("chat.txt", "r")
+    for line in chat_file:
         chat.append(line.split(": ", 1))
     for u, m in chat:
         # for each line decrypt here
-        print(u, ": ", m,sep="" ,end="")
-    chatFile.close()
-    chatFile = open("chat.txt", "a")
+        print(u, ": ", m, sep="", end="")
+    chat_file.close()
+    chat_file = open("chat.txt", "a")
     print(user, end="")
     msg = input(": ")
     # encrypt the message here
     message = user + ": " + msg + "\n"
-    chatFile.write(message)
-    chatFile.close()
+    chat_file.write(message)
+    chat_file.close()
     chat.clear()
 
 while True:
