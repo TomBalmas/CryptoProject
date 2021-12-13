@@ -750,17 +750,3 @@ class triple_des(_baseDes):
             data = self.__key2.crypt(data, ENCRYPT)
             data = self.__key1.crypt(data, DECRYPT)
         return self._unpadData(data, pad, padmode)
-
-
-
-#main:
-
-tp = triple_des('sdffdndmrdmfdmfd',padmode=PAD_PKCS5)
-print(tp.getKey())
-cipher = tp.encrypt('tom')
-print(cipher)
-plain = tp.decrypt(cipher)
-plain = plain.decode("utf-8")
-print(plain)
-
-
