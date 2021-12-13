@@ -630,8 +630,9 @@ class triple_des(_baseDes):
                           self._padding, self._padmode)
         self.__key2 = des(key[8:16], self._mode, self._iv,
                           self._padding, self._padmode)
+        #  K1 = K3
         if self.key_size == 16:
-            self.__key3 = self.__key1
+            self.__key3 = self.__key1 
         else:
             self.__key3 = des(key[16:], self._mode, self._iv,
                               self._padding, self._padmode)
@@ -754,12 +755,12 @@ class triple_des(_baseDes):
 
 #main:
 
-tp = triple_des('sdffdndmrdmfdmfd',padmode=PAD_PKCS5)
-
-cipher = tp.encrypt('tombdrgdfgdfgdfgdfgsdfgsdfgalmas')
-
-plain = tp.decrypt(cipher)
-plain = plain.decode("utf-8")
-print(plain)
+# tp = triple_des('sdffdndmrdmfdmfd',padmode=PAD_PKCS5)
+#
+# cipher = tp.encrypt('tombdrgdfgdfgdfgdfgsdfgsdfgalmas')
+#
+# plain = tp.decrypt(cipher)
+# plain = plain.decode("utf-8")
+# print(plain)
 
 

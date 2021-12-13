@@ -3,7 +3,6 @@ PyDHE - Diffie-Hellman Key Exchange in Python
 """
 
 import hashlib
-import sys
 from binascii import hexlify  # For debug output
 
 
