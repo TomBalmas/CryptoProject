@@ -6,15 +6,21 @@ users = ("Alice", "Bob")
 inboxes = [["", "", "", ""], ["", "", "", ""]]
 
 def app():
-    user = input("Enter user: ")
-    if user.lower() == "alice":
-        user = "Alice"
-        receiver = users[1]
-        inbox = inboxes[0]
-    else:
-        user = "Bob"
-        receiver = users[0]
-        inbox = inboxes[1]
+    valid = False
+    while not valid:
+        user = input("Enter user: ")
+        if user.lower() == "alice":
+            valid = True
+            user = "Alice"
+            receiver = users[1]
+            inbox = inboxes[0]
+        elif user.lower() == "bob":
+            valid = True
+            user = "Bob"
+            receiver = users[0]
+            inbox = inboxes[1]
+        else:
+            print("Error: User not found...")
     print("--------------------CryptoWhatsApp--------------------")
     if inbox != ["", "", "", ""]:
         print(receiver, ": ", sep="", end="")
