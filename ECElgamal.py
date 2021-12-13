@@ -45,7 +45,3 @@ def verify(msg,r,s,QA):
     #print (f"\nResult r={res}")
     if (res==r):
 	    print("Signature matches!")
-
-r,s,QA = sign("blabla")
-
-verify("blabla",r,s,QA)
