@@ -28,7 +28,7 @@ def sign(msg):
     inv_k = libnum.invmod(k,curve.n)
 
     s = (inv_k*(h+r*dA)) % curve.n
-    print(f"Msg: {msg}\n\nAlice's private key={dA}\nAlice's public key={QA}\nk= {k}\n\nr={r}\ns={s}")
+    #print(f"Msg: {msg}\n\nAlice's private key={dA}\nAlice's public key={QA}\nk= {k}\n\nr={r}\ns={s}")
     return r,s,QA
 
 
@@ -42,8 +42,7 @@ def verify(msg,r,s,QA):
     u2=(r*c) % curve.n
     P = point_add(scalar_mult(u1,curve.g), scalar_mult(u2,QA))
     res = P[0] % curve.n
-    print (f"\nResult r={res}")
-
+    #print (f"\nResult r={res}")
     if (res==r):
 	    print("Signature matches!")
 

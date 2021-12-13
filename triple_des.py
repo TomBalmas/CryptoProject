@@ -755,12 +755,12 @@ class triple_des(_baseDes):
 
 #main:
 
-# tp = triple_des('sdffdndmrdmfdmfd',padmode=PAD_PKCS5)
-#
-# cipher = tp.encrypt('tombdrgdfgdfgdfgdfgsdfgsdfgalmas')
-#
-# plain = tp.decrypt(cipher)
-# plain = plain.decode("utf-8")
-# print(plain)
+tp = triple_des('sdffdndmrdmfdmfd',padmode=PAD_PKCS5)
+print(tp.getKey())
+cipher = tp.encrypt('tom')
+print(cipher)
+plain = tp.decrypt(cipher)
+plain = plain.decode("utf-8")
+print(plain)
 
 

@@ -24,12 +24,12 @@ class DiffieHellman(object):
 	a 540+ bit exponent.
 	"""
 
-	def __init__(self, generator=2, group=17, keyLength=56):
+	def __init__(self, generator=2, group=17, keyLength=16):
 		"""
 		Generate the public and private keys.
 		"""
-		min_keyLength = 56
-		default_keyLength = 56
+		min_keyLength = 16
+		default_keyLength = 16
 
 		default_generator = 2
 		valid_generators = [ 2, 3, 5, 7 ]
@@ -138,10 +138,9 @@ class DiffieHellman(object):
 				self.sharedSecret.bit_length() // 8 + 1, byteorder="big")
 		except AttributeError:
 			_sharedSecretBytes = str(self.sharedSecret)
-
 		s = hashlib.sha256()
 		s.update(bytes(_sharedSecretBytes))
-		self.key = s.digest()
+		self.key = s.digest()[0:16]
 
 	def getKey(self):
 		"""
