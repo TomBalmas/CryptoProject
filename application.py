@@ -23,7 +23,6 @@ def app():
             print("Error: User not found...")
     print("--------------------CryptoWhatsApp--------------------")
     if inbox != ["", "", "", ""]:
-        print(receiver, ": ", sep="", end="")
         print("decrypting cipher: ", inbox[0])
         if user.lower() == "alice":
             plain = tdAlice.decrypt(inbox[0]).decode("utf-8")
