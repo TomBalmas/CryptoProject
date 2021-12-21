@@ -7,6 +7,23 @@ encryption-decryption with Triple DES in ECB mode,Diffie Hellman secret key deli
  
 
 
-## How to use
+## How To Install
+You can either install packages manually or create virtual environment by install the requirements in the "requirements.txt". </br>
+pyCharm will install packages automatically.
 
-TBD </br>
+to install manually you can write on terminal: </br>
+pip environment:</br>
+`pip3 install pyparsing` </br>
+`pip install libnum` </br>
+anaconda environment:</br>
+`conda install -c anaconda pyparsing`</br>
+`conda install -c esrf-bcu libnuma` - Linux only (sorry)
+
+## How To Run
+
+Run application.py file on python environment. </br>
+
+##How To Use 
+Enter a username, write whatever you would like to transfer to other user.</br>
+Enjoy, for any question you can write a private message.
+
