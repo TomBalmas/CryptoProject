@@ -19,6 +19,8 @@ def app():
             user = "Bob"
             receiver = users[0]
             inbox = inboxes[1]
+        elif user.lower() == "exit":
+            exit(0)
         else:
             print("Error: User not found...")
     print("--------------------CryptoWhatsApp--------------------")
@@ -30,7 +32,7 @@ def app():
             plain = tdBob.decrypt(inbox[0]).decode("utf-8")
         print("verifying signature:", inbox[1])
         verify(plain, inbox[1], inbox[2], inbox[3])
-        print(receiver,":",plain)
+        print(receiver, ": ", plain, sep="")
 
     print(user, end="")
     msg = input(": ")
@@ -40,11 +42,12 @@ def app():
         cipher = tdAlice.encrypt(msg)
     else:
         cipher = tdBob.encrypt(msg)
-    print(user, "sent to", receiver, ":", cipher, "with signature:", r)
+    print(user, " sent to ", receiver, ": ", cipher, " with signature: ", r,sep="")
     if user.lower() == "bob":
         inboxes[0] = cipher, r, s, QA
     else:
         inboxes[1] = cipher, r, s, QA
+    print("------------------------------------------------------")
 
     # input crypto project
     return user, cipher
