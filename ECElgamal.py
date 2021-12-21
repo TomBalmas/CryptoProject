@@ -9,27 +9,23 @@ from utils import curve,scalar_mult,point_add
 
 def sign(msg):
 
+    s = 0 
     if (len(sys.argv)>1):
         msg=(sys.argv[1])
-
     # Alice's key pair (dA,QA)
     dA = randint(0, curve.n-1)
-    QA = scalar_mult(dA,curve.g)
+    QA = scalar_mult(dA, curve.g)
 
-    h=int(hash(msg.encode()).hexdigest(),16)
-
-    k = randint(0, curve.n-1)
-
-    rpoint = scalar_mult(k,curve.g)
-
-    r = rpoint[0] % curve.n
-
+    h=int(hash(msg.encode()).hexdigest(), 16)
+    while s == 0:
+        k = randint(0, curve.n-1)
+        rpoint = scalar_mult(k, curve.g)
+        r = rpoint[0] % curve.n
     # Bob takes m and (r,s) and checks
-    inv_k = libnum.invmod(k,curve.n)
-
-    s = (inv_k*(h+r*dA)) % curve.n
+        inv_k = libnum.invmod(k, curve.n)
+        s = (inv_k*(h+r*dA)) % curve.n
     #print(f"Msg: {msg}\n\nAlice's private key={dA}\nAlice's public key={QA}\nk= {k}\n\nr={r}\ns={s}")
-    return r,s,QA
+    return r, s, QA
 
 
 # To check signature
