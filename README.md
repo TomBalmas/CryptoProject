@@ -3,7 +3,7 @@
 This repository is our project on data security and Cryptology course, </br>
 The code includes implementation of exchanging secure SMSs between two endpoints (Alice and Bob),  </br>
 encryption-decryption with Triple DES in ECB mode,Diffie Hellman secret key delivery and signature with EC El-Gamal. </br>
-© All rights reserved to Tom Balmas, Ohad Lavi & Daniel Ben-David. </br>
+© All rights reserved to Tom Balmas, Ohad Lavi & Daniel Ben David. </br>
  
 
 
