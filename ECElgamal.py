@@ -9,7 +9,8 @@ from utils import curve,scalar_mult,point_add
 
 def sign(msg):
 
-    s = 0 
+    s = 0
+    r = 0
     if (len(sys.argv)>1):
         msg=(sys.argv[1])
     # Alice's key pair (dA,QA)
@@ -21,6 +22,8 @@ def sign(msg):
         k = randint(0, curve.n-1)
         rpoint = scalar_mult(k, curve.g)
         r = rpoint[0] % curve.n
+        if r==0:
+            continue
     # Bob takes m and (r,s) and checks
         inv_k = libnum.invmod(k, curve.n)
         s = (inv_k*(h+r*dA)) % curve.n
