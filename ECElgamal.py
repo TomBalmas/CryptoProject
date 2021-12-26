@@ -41,3 +41,6 @@ def verify(msg,r,s,QA):
     #print (f"\nResult r={res}")
     if (res==r):
 	    print("Signature matches!")
+    else:
+        print("Not Valid signature!!")
+        exit(0)

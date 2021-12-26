@@ -55,8 +55,8 @@ def app():
 
 print("Welcome to CryptoWhatsApp:\n"
       "Users are Alice and Bob")
-alice = DiffieHellman()
-bob = DiffieHellman()
+alice = DiffieHellman() # create g p pubilc key
+bob = DiffieHellman() # create g p pubilc key
 print("Alice's public key:", alice.publicKey)
 print("Bob's public key:", bob.publicKey)
 print("Alice generates her key for encrypt/decrypt:")
