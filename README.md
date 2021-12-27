@@ -14,10 +14,9 @@ pyCharm will install packages automatically.
 to install manually you can write on terminal: </br>
 pip environment:</br>
 `pip3 install pyparsing` </br>
-`pip install libnum` </br>
+
 anaconda environment:</br>
 `conda install -c anaconda pyparsing`</br>
-`conda install -c esrf-bcu libnuma` - Linux only (sorry)
 
 ## How To Run
 

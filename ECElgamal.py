@@ -1,7 +1,6 @@
 import sys
 from random import randint, randrange
 from hashlib import sha256 as hash
-import libnum
 from utils import curve, scalar_mult, point_add
 
 
@@ -20,7 +19,7 @@ def sign(msg, dA):
         if r == 0:
             continue
         # Bob takes m and (r,s) and checks
-        inv_k = libnum.invmod(k, curve.n)
+        inv_k = pow(k, -1, curve.n)
         s = (inv_k * (h + r * dA)) % curve.n
     # print(f"Msg: {msg}\n\nAlice's private key={dA}\nAlice's public key={QA}\nk= {k}\n\nr={r}\ns={s}")
     return r, s
@@ -29,7 +28,7 @@ def sign(msg, dA):
 # To check signature
 
 def verify(msg, r, s, QA):
-    inv_s = libnum.invmod(s, curve.n)
+    inv_s = pow(s, -1, curve.n)
     c = inv_s
     h = int(hash(msg.encode()).hexdigest(), 16)
     u1 = (h * c) % curve.n
