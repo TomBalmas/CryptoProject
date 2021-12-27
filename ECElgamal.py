@@ -1,4 +1,3 @@
-
 import sys
 from random import randint
 from hashlib import sha256 as hash
@@ -7,15 +6,13 @@ import libnum
 from utils import curve,scalar_mult,point_add
 
 
-def sign(msg):
+def sign(msg,dA):
 
     s = 0
     r = 0
     if (len(sys.argv)>1):
         msg=(sys.argv[1])
     # Alice's key pair (dA,QA)
-    dA = randint(0, curve.n-1)
-    QA = scalar_mult(dA, curve.g)
 
     h=int(hash(msg.encode()).hexdigest(), 16)
     while s == 0:
@@ -28,7 +25,7 @@ def sign(msg):
         inv_k = libnum.invmod(k, curve.n)
         s = (inv_k*(h+r*dA)) % curve.n
     #print(f"Msg: {msg}\n\nAlice's private key={dA}\nAlice's public key={QA}\nk= {k}\n\nr={r}\ns={s}")
-    return r, s, QA
+    return r, s
 
 
 # To check signature

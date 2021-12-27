@@ -39,16 +39,17 @@ def app():
     print(user, end="")
     msg = input(": ")
     print(user, "signing the message...")
-    r, s, QA = sign(msg)
     if user.lower() == "alice":
+        r, s = sign(msg, aliceSecretKey)
         cipher = tdAlice.encrypt(msg)
     else:
+        r, s = sign(msg,bobSecretKey)
         cipher = tdBob.encrypt(msg)
     print(user, " sent to ", receiver, ": ", cipher, " with signature: ", r,sep="")
     if user.lower() == "bob":
-        inboxes[0] = cipher, r, s, QA
+        inboxes[0] = cipher, r, s, bobPublicKey
     else:
-        inboxes[1] = cipher, r, s, QA
+        inboxes[1] = cipher, r, s, alicePublicKey
     print("------------------------------------------------------")
 
     # input crypto project
