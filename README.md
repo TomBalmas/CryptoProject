@@ -1,4 +1,4 @@
-# Cryptology Project
+# Data Security & Cryptology Project
 
 This repository is our project on data security and Cryptology course, </br>
 The code includes implementation of exchanging secure SMSs between two endpoints (Alice and Bob),  </br>
