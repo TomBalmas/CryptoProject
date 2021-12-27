@@ -15,12 +15,12 @@ def app():
             valid = True
             user = "Alice"
             receiver = users[1]
-            inbox = inboxes[0]
+            inbox = inboxes[0] # alice inbox
         elif user.lower() == "bob":
             valid = True
             user = "Bob"
             receiver = users[0]
-            inbox = inboxes[1]
+            inbox = inboxes[1] # bob inbox
         elif user.lower() == "exit":
             exit(0)
         else:
