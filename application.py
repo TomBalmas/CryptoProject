@@ -67,14 +67,15 @@ print("Alice\'s public key:\t", alicePublicKey)
 print("Bob\'s secret key:\t", bobSecretKey)
 print("Bob\'s public key:\t", bobPublicKey)
 
-sharedSecret1 = scalar_mult(bobSecretKey,alicePublicKey)
-sharedSecret2 = scalar_mult(aliceSecretKey,bobPublicKey)
-print("Alice\'s shared key:\t",sharedSecret1)
-print("Bob\'s shared key:\t",sharedSecret2)
+sharedSecret1 = scalar_mult(bobSecretKey, alicePublicKey)
+sharedSecret2 = scalar_mult(aliceSecretKey, bobPublicKey)
+print("Alice\'s shared key:\t", sharedSecret1)
+print("Bob\'s shared key:\t", sharedSecret2)
 print("The shared value is the x-value:\t", (sharedSecret1[0]))
+print("Encryption/Decryption Key is 38-53 index numbers from the secret shared key:", str(sharedSecret1[0])[38:54])
 
-tdBob = triple_des(str(sharedSecret2[0])[:16], padmode=PAD_PKCS5)
-tdAlice = triple_des(str(sharedSecret1[0])[:16], padmode=PAD_PKCS5)
+tdBob = triple_des(str(sharedSecret2[0])[38:54], padmode=PAD_PKCS5)
+tdAlice = triple_des(str(sharedSecret1[0])[38:54], padmode=PAD_PKCS5)
 
 while True:
     app()
