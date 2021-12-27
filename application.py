@@ -1,6 +1,8 @@
 from triple_des import triple_des, PAD_PKCS5
 from ECElgamal import sign, verify
 from DiffieHellman import DiffieHellman
+from ELGamalKeyDelivery import make_keypair
+from utils import  scalar_mult
 
 users = ("Alice", "Bob")
 inboxes = [["", "", "", ""], ["", "", "", ""]]
@@ -55,18 +57,23 @@ def app():
 
 print("Welcome to CryptoWhatsApp:\n"
       "Users are Alice and Bob")
-alice = DiffieHellman() # create g p pubilc key
-bob = DiffieHellman() # create g p pubilc key
-print("Alice's public key:", alice.publicKey)
-print("Bob's public key:", bob.publicKey)
-print("Alice generates her key for encrypt/decrypt:")
-alice.genKey(bob.publicKey)
-print(alice.getKey())
-print("Bob generates his key for encrypt/decrypt:")
-bob.genKey(alice.publicKey)
-print(bob.getKey())
-tdBob = triple_des(bob.getKey(), padmode=PAD_PKCS5)
-tdAlice = triple_des(alice.getKey(), padmode=PAD_PKCS5)
+
+
+aliceSecretKey, alicePublicKey = make_keypair()
+bobSecretKey, bobPublicKey = make_keypair()
+print("Alice\'s secret key:\t", aliceSecretKey)
+print("Alice\'s public key:\t", alicePublicKey)
+print("Bob\'s secret key:\t", bobSecretKey)
+print("Bob\'s public key:\t", bobPublicKey)
+
+sharedSecret1 = scalar_mult(bobSecretKey,alicePublicKey)
+sharedSecret2 = scalar_mult(aliceSecretKey,bobPublicKey)
+print("Alice\'s shared key:\t",sharedSecret1)
+print("Bob\'s shared key:\t",sharedSecret2)
+print("The shared value is the x-value:\t", (sharedSecret1[0]))
+
+tdBob = triple_des(str(sharedSecret2[0])[:16], padmode=PAD_PKCS5)
+tdAlice = triple_des(str(sharedSecret1[0])[:16], padmode=PAD_PKCS5)
 
 while True:
     app()
