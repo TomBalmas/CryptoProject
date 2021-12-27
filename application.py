@@ -1,7 +1,5 @@
 from triple_des import triple_des, PAD_PKCS5
-from ECElgamal import sign, verify
-from DiffieHellman import DiffieHellman
-from ELGamalKeyDelivery import make_keypair
+from ECElgamal import sign, verify, make_keypair
 from utils import  scalar_mult
 
 users = ("Alice", "Bob")

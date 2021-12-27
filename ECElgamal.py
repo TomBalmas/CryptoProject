@@ -1,5 +1,5 @@
 import sys
-from random import randint
+from random import randint, randrange
 from hashlib import sha256 as hash
 import libnum
 
@@ -44,3 +44,10 @@ def verify(msg,r,s,QA):
     else:
         print("Not Valid signature!!")
         exit(0)
+
+def make_keypair():
+    """Generates a random private-public key pair."""
+    private_key = randrange(1, curve.n)
+    public_key = scalar_mult(private_key, curve.g)
+
+    return private_key, public_key
