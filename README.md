@@ -22,7 +22,7 @@ anaconda environment:</br>
 
 Run application.py file on python environment. </br>
 
-##How To Use 
+## How To Use 
 Enter a username, write whatever you would like to transfer to other user.</br>
 Enjoy, for any question you can write a private message.
 
